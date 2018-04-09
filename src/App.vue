@@ -17,4 +17,7 @@ export default {
     font-size:14px;
     font-family: "Microsoft YaHei";
   }
+  ul li {
+    list-style-type: none;
+  }
 </style>

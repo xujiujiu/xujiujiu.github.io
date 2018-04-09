@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import archives from '@/components/archives'
 import about from '@/components/about'
 import link from '@/components/link'
+import classify from '@/components/classify'
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +23,11 @@ export default new Router({
       path: '/archives',
       name: 'Archives',
       component: archives
+    },
+    {
+      path: '/classify',
+      name: 'Classify',
+      component: classify
     },
     {
       path: '/about',
