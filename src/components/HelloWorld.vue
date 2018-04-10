@@ -1,12 +1,18 @@
 <template>
-  <div class="head">
-    <ul class="menu">
-      <li v-for="value in menu">
-        <router-link :to="value.route" class="menuA">{{ value.name }}</router-link>
-      </li>
-    </ul>
-    <div class="title">{{ msg }}</div>
+  <div id="HelloWorld">
+    <div class="head">
+      <ul class="menu">
+        <li v-for="value in menu">
+          <router-link :to="value.route" class="menuA" @click="changeMenu(value.route)">{{ value.name }}</router-link>
+        </li>
+      </ul>
+      <div class="title">{{ msg }}</div>
+    </div>
+    <div class="contain">
+      <router-view ></router-view>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -38,6 +44,11 @@ export default {
         }
       ]
     }
+  },
+  method: {
+    changeMenu: (route) => {
+      this.$router.push(route)
+    }
   }
 }
 </script>
@@ -45,6 +56,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @title-font-color: #999;
+@shadow-color:#ccc;
+#background-color(){
+  background-color: transparent;
+}
 .head{
   position: absolute;
   top:0;
@@ -52,7 +67,9 @@ export default {
   left:0;
   bottom:0;
   height:150px;
-  background-color:rgb(242,242,242);
+  background-color:#f2f2f2;
+  box-shadow: @shadow-color 0 0 10px 0;
+  z-index: 1;
 
 }
   .title{
@@ -64,15 +81,18 @@ export default {
     color:@title-font-color;
     position: relative;
     top: 50px;
+    #background-color
   }
 .menu{
   display: inline-block;
   position: absolute;
   top: 10px;
   right: 10px;
+  #background-color
 }
 ul li {
   float: left;
+  #background-color
 }
   .menuA{
     text-decoration: none;
@@ -80,5 +100,18 @@ ul li {
     font-size: 14px;
     display: inline-block;
     margin-right: 20px;
+    #background-color
+  }
+  .contain{
+    display: block;
+    position: absolute;
+    top: 150px;
+    left:10%;
+    width:80%;
+    height:calc(100% - 150px);
+    border-left:1px solid #f2f2f2;
+    border-right:1px solid #f2f2f2;
+    background-color: #ffffff;
+    box-shadow: 0 5px 5px @shadow-color ;
   }
 </style>
