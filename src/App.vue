@@ -16,7 +16,6 @@ export default {
     padding:0;
     font-size:14px;
     font-family: "Microsoft YaHei";
-    background-color: #fcfcfc;
   }
   ul li {
     list-style-type: none;

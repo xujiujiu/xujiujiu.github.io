@@ -55,18 +55,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+  @titleHeight:150px;
 @title-font-color: #999;
 @shadow-color:#ccc;
 #background-color(){
   background-color: transparent;
 }
+  #HelloWorld{
+  background-color: #fcfcfc;
+  }
 .head{
   position: absolute;
   top:0;
   right:0;
   left:0;
   bottom:0;
-  height:150px;
+  height:@titleHeight;
   background-color:#f2f2f2;
   box-shadow: @shadow-color 0 0 10px 0;
   z-index: 1;
@@ -105,10 +109,10 @@ ul li {
   .contain{
     display: block;
     position: absolute;
-    top: 150px;
+    top: @titleHeight;
     left:10%;
     width:80%;
-    height:calc(100% - 150px);
+    height:calc(100% - @titleHeight);
     border-left:1px solid #f2f2f2;
     border-right:1px solid #f2f2f2;
     background-color: #ffffff;
