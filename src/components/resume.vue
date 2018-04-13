@@ -7,9 +7,16 @@
     <div class="contain">
       <div class="touxiang">
         <div class="circle1"></div>
-        <div class="circle2" ><img src="../assets/images/头像.jpg"/></div>
-        <div class="circle2" ></div>
+        <div class="circle2" ><img src="../assets/images/头像.jpg" /></div>
         <div id="name" class="name"><span v-text="name"></span></div>
+      </div>
+      <div class="aboutMe">
+        <div class="greenFont"><b>{{aboutMe.title}}</b></div>
+        <hr/>
+        <div v-for="item in aboutMe.info" class="aboutMeInfo">
+          <b><span v-text="item.name" class="greenFont"></span></b>
+          <span v-text="item.value" class="whiteFont"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -21,13 +28,36 @@
   data () {
     return {
       msg: '#####',
-      name: '####'
+      name: '####',
+      aboutMe: {
+        title: 'About Me',
+        info: [
+          {
+            name: 'Tel：',
+            value: '158****1791'
+          },
+          {
+            name: 'Email：',
+            value: '906784584@qq.com'
+          },
+          {
+            name: 'Graduate School：',
+            value: 'Hefei Normal University'
+          },
+          {
+            name: 'Graduate Time：',
+            value: '2016-07-01'
+          },
+          {
+            name: 'Birthday：',
+            value: '1994-01-06'
+          }
+        ]
+      }
     }
   },
   method: {
-    changeMenu: (route) => {
-      this.$router.push(route)
-    }
+
   }
 }
 </script>
@@ -39,17 +69,20 @@
   @font-color: #eee;
   @cur-off-color:#ccc;
   @backgroundColor: #302e2f;
-  @circleColor1:#1e1c17;
-  @circleColor2:#424041;
+  @circleColor1:#171717;
+  @circleColor2:#404040;
   @circleColor3:#444243;
   @touxiangWidth:15rem;
   @circle2width:13rem;
+  .font-family{
+    font-family: 'Arial','楷体' !important;
+  }
   .border-radius(@args){
     -webkit-border-radius:@args;
     -moz-border-radius:@args;
     border-radius:@args;
   }
-  .Alpha(@args){   //背景模糊
+  .Alpha(@args){   //背景透明
     -webkit-filter:Alpha(opacity=@args);
     -ms-filter:Alpha(opacity=@args);
     filter:Alpha(opacity=@args);
@@ -62,11 +95,24 @@
   #background-color(){
     background-color: transparent;
   }
+  .grad(@args0,@args1, @args2) {
+    background: -webkit-linear-gradient(@args0, @args1, @args2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@args0,@args1, @args2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@args0,@args1, @args2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@args0,@args1, @args2); /* 标准的语法 */
+  }
   #resume{
+    .font-family;
     background-color: @backgroundColor;
     position: absolute;
     width:100%;
     height:100%;
+  }
+  .greenFont{
+    color:@greenFontColor
+  }
+  .whiteFont{
+    color:@font-color
   }
   .head{
     position: absolute;
@@ -84,7 +130,7 @@
     text-align: center;
     vertical-align: middle;
     font-size: 2rem;
-    font-family:"新宋体";
+    .font-family;
     color:@font-color;
     position: relative;
     top: 1rem;
@@ -101,6 +147,7 @@
     height:calc(100% - @titleHeight);
   }
   .touxiang{
+    display: inline-block;
     height:@touxiangWidth;
     width:@touxiangWidth;
     position: relative;
@@ -116,24 +163,29 @@
   }
   .circle2{
     position: absolute;
-    top:(@touxiangWidth - @circle2width  + 2.5rem) / 2;
-    left:(@touxiangWidth - @circle2width + 2.5rem) / 2;
-    width:@circle2width - 2.5rem;
-    height:@circle2width - 2.5rem;
+    top:(@touxiangWidth - @circle2width  + 1.7rem) / 2;
+    left:(@touxiangWidth - @circle2width + 1.7rem) / 2;
+    width:@circle2width - 1.7rem;
+    height:@circle2width - 1.7rem;
     .border-radius(50%);
-    .Alpha(0);
-    box-sizing: border-box;
-    border:0.5rem solid #000;
+    .grad(180deg,@circleColor1,@circleColor2);
   }
   .circle2 img{
     .border-radius(50%);
-    width:@circle2width - 3.5rem ;
-    height:@circle2width - 3.5rem;
-    .blur(0.3rem);
+    position: absolute;
+    top:0.7rem;
+    left:0.7rem;
+    width:@circle2width - 3rem ;
+    height:@circle2width - 3rem;
+    -webkit-animation:circle 5s infinite linear;/*匀速 循环*/
+    -moz-animation: circle 5s infinite linear;/*匀速 循环*/
+    animation: circle 5s infinite linear;/*匀速 循环*/
   }
-  .circle2 img:hover, .circle2:hover{
-    .blur(0);
+  @-webkit-keyframes circle {
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
   }
+
   .name{
     position: absolute;
     bottom:0;
@@ -146,5 +198,15 @@
     font-size: 1.5rem;
     background-color: @backgroundColor;
   }
-
+  .aboutMe{
+    margin-left:2rem;
+    display: inline-block;
+    width:30rem;
+  }
+  .aboutMe .aboutMeInfo{
+    margin-top: 0.5rem;
+  }
+  .aboutMe hr{
+    color: @circleColor2;
+  }
 </style>
