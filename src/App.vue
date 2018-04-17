@@ -20,4 +20,7 @@ export default {
   ul li {
     list-style-type: none;
   }
+  .hidden{
+    display: none;
+  }
 </style>

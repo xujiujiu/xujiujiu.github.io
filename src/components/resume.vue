@@ -7,15 +7,31 @@
     <div class="contain">
       <div class="touxiang">
         <div class="circle1"></div>
-        <div class="circle2" ><img src="../assets/images/头像.jpg" /></div>
+        <div class="circle2"><img src="../assets/images/头像.jpg"/></div>
         <div id="name" class="name"><span v-text="name"></span></div>
       </div>
-      <div class="aboutMe">
+      <div class="info hidden" id="aboutMe">
         <div class="greenFont"><b>{{aboutMe.title}}</b></div>
         <hr/>
-        <div v-for="item in aboutMe.info" class="aboutMeInfo">
-          <b><span v-text="item.name" class="greenFont"></span></b>
-          <span v-text="item.value" class="whiteFont"></span>
+        <div v-for="(value, key) in aboutMe.info" class="aboutMeInfo" :key="key">
+          <b><span v-text="value.name" class="greenFont"></span></b>
+          <span v-text="value.value" class="whiteFont"></span>
+        </div>
+      </div>
+      <div class="info" id="ProjectEx">
+        <div class="greenFont"><b>{{ProjectEx.title}}</b></div>
+        <hr/>
+        <div v-for="(value, key) in ProjectEx.info" class="aboutMeInfo" :key="key">
+          <div v-text="value.name" class="greenFont"></div>
+          <div v-text="value.value" class="whiteFont"></div>
+        </div>
+      </div>
+      <div class="info" id="WorkEx">
+        <div class="greenFont"><b>{{WorkEx.title}}</b></div>
+        <hr/>
+        <div v-for="(value, key) in WorkEx.info" class="aboutMeInfo" :key="key">
+          <div v-text="value.name" class="greenFont"></div>
+          <div v-text="value.value" class="whiteFont"></div>
         </div>
       </div>
     </div>
@@ -51,6 +67,33 @@
           {
             name: 'Birthday：',
             value: '1994-01-06'
+          }
+        ]
+      },
+      ProjectEx: {
+        title: 'Project Experience',
+        info: [
+          {
+            title: 'FoodApp',
+            value: 'Welcome to visit my food App, Would you want to something to eat?'
+          }
+        ]
+      },
+      WorkEx: {
+        title: 'Work Experience',
+        info: [
+          {
+            time: '2016',
+            companyName: 'uniview',
+            WorkContent: ''
+          }
+        ]
+      },
+      selfEvaluation: {
+        title: 'Self Evaluation',
+        info: [
+          {
+            content: ''
           }
         ]
       }
@@ -198,15 +241,19 @@
     font-size: 1.5rem;
     background-color: @backgroundColor;
   }
-  .aboutMe{
+  .info{
     margin-left:2rem;
     display: inline-block;
     width:30rem;
   }
-  .aboutMe .aboutMeInfo{
+  .info .aboutMeInfo{
     margin-top: 0.5rem;
   }
-  .aboutMe hr{
+  .info hr{
     color: @circleColor2;
+  }
+
+  .hidden{
+    display: none;
   }
 </style>

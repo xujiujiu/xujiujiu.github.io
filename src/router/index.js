@@ -10,7 +10,7 @@ import home from '@/components/home'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',   //去掉默认地址栏的#
+  mode: 'history',
   routes: [
     {
       path: '/',

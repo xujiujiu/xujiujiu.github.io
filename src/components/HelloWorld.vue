@@ -2,7 +2,7 @@
   <div id="HelloWorld">
     <div class="head">
       <ul class="menu">
-        <li v-for="value in menu">
+        <li v-for="(value, key) in menu" :key="key">
           <router-link :to="value.route" class="menuA" @click="changeMenu(value.route)">{{ value.name }}</router-link>
         </li>
       </ul>
