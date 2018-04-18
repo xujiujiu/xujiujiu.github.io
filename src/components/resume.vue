@@ -5,7 +5,7 @@
     </div>
 
     <div class="contain">
-      <div class="touxiang">
+      <div class="touxiang hidden">
         <div class="circle1"></div>
         <div class="circle2"><img src="../assets/images/头像.jpg"/></div>
         <div id="name" class="name"><span v-text="name"></span></div>
@@ -18,7 +18,7 @@
           <span v-text="value.value" class="whiteFont"></span>
         </div>
       </div>
-      <div class="info" id="ProjectEx">
+      <div class="info hidden" id="ProjectEx">
         <div class="greenFont"><b>{{ProjectEx.title}}</b></div>
         <hr/>
         <div v-for="(value, key) in ProjectEx.info" class="aboutMeInfo" :key="key">
@@ -29,9 +29,23 @@
       <div class="info" id="WorkEx">
         <div class="greenFont"><b>{{WorkEx.title}}</b></div>
         <hr/>
+        <div class="list">
+          <div v-for="(value, key, index) in WorkEx.info" class="aboutMeInfo listItem listItem-first" :class="{highlight: index == 0}" :key="key">
+            <div class="listItemContent">
+              <div v-text="value.time" class="greenFont"></div>
+              <div v-text="value.companyName" class="whiteFont"></div>
+              <div v-text="value.WorkContent" class="whiteFont"></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="info hidden" id="selfEvaluation">
+        <div class="greenFont"><b>{{selfEvaluation.title}}</b></div>
+        <hr/>
         <div v-for="(value, key) in WorkEx.info" class="aboutMeInfo" :key="key">
-          <div v-text="value.name" class="greenFont"></div>
-          <div v-text="value.value" class="whiteFont"></div>
+          <div v-text="value.content" class="whiteFont"></div>
         </div>
       </div>
     </div>
@@ -45,6 +59,7 @@
     return {
       msg: '#####',
       name: '####',
+      webSite: 'http://www.ayqy.net/temp/timeline/index.html',
       aboutMe: {
         title: 'About Me',
         info: [
@@ -253,6 +268,59 @@
     color: @circleColor2;
   }
 
+  .list{
+    margin:0 0.5rem 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .listItem{
+     position: relative;
+     padding-left:4rem;
+     padding-top:0.5rem;
+   }
+  .listItem:before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top:0;
+    left:0;
+    width:1px;
+    height:100%;
+    border-right:0.1rem solid @greenFontColor;
+    z-index: 1;
+  }
+  .listItem:after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width:0.8rem;
+    height:0.8rem;
+    border-right:0.1rem solid @greenFontColor;
+    .border-radius(0.4rem);
+    left:1.6rem;
+    top:70%;
+    margin-top:-2px;
+    z-index: 1;
+  }
+  .listItem .highlight:after{
+    box-sizing: border-box;
+    width:1.6rem;
+    height:1.6rem;
+    background-color: @greenFontColor;
+    border: 0.4rem solid @backgroundColor;
+    .border-radius(0.8rem);
+    left:1.2rem;
+    z-index:2;
+
+  }
+  .listItem-first:before{
+    height: 50%;
+    top:50%;
+  }
+  .listItemContent{
+    padding:1rem;
+    border:none;
+  }
   .hidden{
     display: none;
   }
