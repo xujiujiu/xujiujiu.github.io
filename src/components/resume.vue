@@ -5,12 +5,12 @@
     </div>
 
     <div class="contain">
-      <div class="touxiang hidden">
+      <div class="touxiang ">
         <div class="circle1"></div>
         <div class="circle2"><img src="../assets/images/头像.jpg"/></div>
         <div id="name" class="name"><span v-text="name"></span></div>
       </div>
-      <div class="info hidden" id="aboutMe">
+      <div class="info " id="aboutMe">
         <div class="greenFont"><b>{{aboutMe.title}}</b></div>
         <hr/>
         <div v-for="(value, key) in aboutMe.info" class="aboutMeInfo" :key="key">
@@ -18,7 +18,7 @@
           <span v-text="value.value" class="whiteFont"></span>
         </div>
       </div>
-      <div class="info hidden" id="ProjectEx">
+      <div class="info " id="ProjectEx">
         <div class="greenFont"><b>{{ProjectEx.title}}</b></div>
         <hr/>
         <div v-for="(value, key) in ProjectEx.info" class="aboutMeInfo" :key="key">
@@ -42,7 +42,7 @@
         </div>
 
       </div>
-      <div class="info hidden" id="selfEvaluation">
+      <div class="info " id="selfEvaluation">
         <div class="greenFont"><b>{{selfEvaluation.title}}</b></div>
         <hr/>
         <div v-for="(value, key) in selfEvaluation.info" class="aboutMeInfo" :key="key">

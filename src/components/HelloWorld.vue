@@ -55,7 +55,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-  @titleHeight:150px;
+  @titleHeight:120px;
 @title-font-color: #999;
 @shadow-color:#ccc;
 #background-color(){
@@ -84,7 +84,7 @@ export default {
     font-family:"新宋体";
     color:@title-font-color;
     position: relative;
-    top: 50px;
+    top: 30px;
     #background-color
   }
 .menu{
