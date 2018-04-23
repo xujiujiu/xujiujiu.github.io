@@ -45,7 +45,7 @@ export default {
       ]
     }
   },
-  method: {
+  methods: {
     changeMenu: (route) => {
       this.$router.push(route)
     }

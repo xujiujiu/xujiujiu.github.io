@@ -29,8 +29,9 @@
       <div class="info" id="WorkEx">
         <div class="greenFont"><b>{{WorkEx.title}}</b></div>
         <hr/>
-        <div class="list">
-          <div v-for="(value, key, index) in WorkEx.info" class="aboutMeInfo listItem listItem-first" :class="{highlight: index == 0}" :key="key">
+        <div class="list aboutMeInfo">
+          <div v-for="(value,index) in WorkEx.info" :class="['listItem',{'highlight': (index === 0)}, {'listItem_first':  (index === 0)}]"
+             @click="clickA(index)">
             <div class="listItemContent">
               <div v-text="value.time" class="greenFont"></div>
               <div v-text="value.companyName" class="whiteFont"></div>
@@ -44,7 +45,7 @@
       <div class="info hidden" id="selfEvaluation">
         <div class="greenFont"><b>{{selfEvaluation.title}}</b></div>
         <hr/>
-        <div v-for="(value, key) in WorkEx.info" class="aboutMeInfo" :key="key">
+        <div v-for="(value, key) in selfEvaluation.info" class="aboutMeInfo" :key="key">
           <div v-text="value.content" class="whiteFont"></div>
         </div>
       </div>
@@ -94,13 +95,23 @@
           }
         ]
       },
-      WorkEx: {
-        title: 'Work Experience',
+      WorkEx: {/*Work Experience*/
+        title: '###',
         info: [
           {
-            time: '2016',
-            companyName: 'uniview',
-            WorkContent: ''
+            time: '2018',
+            companyName: '###',
+            WorkContent: 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
+          },
+          {
+            time: '2018',
+            companyName: '###',
+            WorkContent: 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
+          },
+          {
+            time: '2018',
+            companyName: '###',
+            WorkContent: 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
           }
         ]
       },
@@ -114,8 +125,11 @@
       }
     }
   },
-  method: {
-
+  methods: {
+    clickA: (index) => {
+      debugger;
+      console.log(index)
+    }
   }
 }
 </script>
@@ -139,6 +153,11 @@
     -webkit-border-radius:@args;
     -moz-border-radius:@args;
     border-radius:@args;
+  }
+  .box-shadow(@args0, @args1, @args2,@args3, @args4){
+    -webkit-box-shadow:@args0 @args1 @args2 @args3 @args4;
+    -moz-box-shadow:@args0 @args1 @args2 @args3 @args4;
+    box-shadow:@args0 @args1 @args2 @args3 @args4;
   }
   .Alpha(@args){   //背景透明
     -webkit-filter:Alpha(opacity=@args);
@@ -275,16 +294,13 @@
   }
   .listItem{
      position: relative;
-     padding-left:4rem;
-     padding-top:0.5rem;
    }
   .listItem:before{
     content: "";
     display: inline-block;
     position: absolute;
     top:0;
-    left:0;
-    width:1px;
+    left:0.45rem;
     height:100%;
     border-right:0.1rem solid @greenFontColor;
     z-index: 1;
@@ -293,32 +309,32 @@
     content: "";
     display: inline-block;
     position: absolute;
-    width:0.8rem;
-    height:0.8rem;
-    border-right:0.1rem solid @greenFontColor;
-    .border-radius(0.4rem);
-    left:1.6rem;
-    top:70%;
+    left:0.2rem;
+    width:0.6rem;
+    height: 0.6rem;
+    background-color: @greenFontColor;
+    .border-radius(0.3rem);
+    top:20%;
     margin-top:-2px;
     z-index: 1;
   }
-  .listItem .highlight:after{
+  .highlight:after{
     box-sizing: border-box;
-    width:1.6rem;
-    height:1.6rem;
-    background-color: @greenFontColor;
-    border: 0.4rem solid @backgroundColor;
-    .border-radius(0.8rem);
-    left:1.2rem;
+    width:0.6rem;
+    height:0.6rem;
+    /*background-color: @greenFontColor;*/
+    border: 0.1rem solid @backgroundColor;
+    .box-shadow(0, 0, 0, 0.1rem, lighten(@greenFontColor, 10%));
+    .border-radius(0.3rem);
     z-index:2;
 
   }
-  .listItem-first:before{
-    height: 50%;
-    top:50%;
+  .listItem_first:before{
+    height: 80%;
+    top:20%;
   }
   .listItemContent{
-    padding:1rem;
+    padding:1rem 0 2rem 2rem;
     border:none;
   }
   .hidden{
