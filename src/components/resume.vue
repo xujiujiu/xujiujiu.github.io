@@ -5,12 +5,12 @@
     </div>
 
     <div class="contain">
-      <div class="touxiang ">
+      <div class="touxiang hidden">
         <div class="circle1"></div>
         <div class="circle2"><img src="../assets/images/头像.jpg"/></div>
         <div id="name" class="name"><span v-text="name"></span></div>
       </div>
-      <div class="info " id="aboutMe">
+      <div class="info hidden" id="aboutMe">
         <div class="greenFont"><b>{{aboutMe.title}}</b></div>
         <hr/>
         <div v-for="(value, key) in aboutMe.info" class="aboutMeInfo" :key="key">
@@ -18,7 +18,7 @@
           <span v-text="value.value" class="whiteFont"></span>
         </div>
       </div>
-      <div class="info " id="ProjectEx">
+      <div class="info hidden" id="ProjectEx">
         <div class="greenFont"><b>{{ProjectEx.title}}</b></div>
         <hr/>
         <div v-for="(value, key) in ProjectEx.info" class="aboutMeInfo" :key="key">
@@ -26,12 +26,12 @@
           <div v-text="value.value" class="whiteFont"></div>
         </div>
       </div>
-      <div class="info" id="WorkEx">
+      <div class="info hidden" id="WorkEx">
         <div class="greenFont"><b>{{WorkEx.title}}</b></div>
         <hr/>
-        <div class="list aboutMeInfo">
+        <div class="list aboutMeInfo ">
           <div v-for="(value,index) in WorkEx.info" :class="['listItem',{'highlight': (index === 0)}, {'listItem_first':  (index === 0)}]"
-             @click="clickA(index)">
+             @click="clickA(index)" :key="index">
             <div class="listItemContent">
               <div v-text="value.time" class="greenFont"></div>
               <div v-text="value.companyName" class="whiteFont"></div>
@@ -45,7 +45,7 @@
       <div class="info " id="selfEvaluation">
         <div class="greenFont"><b>{{selfEvaluation.title}}</b></div>
         <hr/>
-        <div v-for="(value, key) in selfEvaluation.info" class="aboutMeInfo" :key="key">
+        <div v-for="(value, key) in selfEvaluation.info" class="aboutMeInfo selfEvaluationContent" :key="key" >
           <div v-text="value.content" class="whiteFont"></div>
         </div>
       </div>
@@ -95,7 +95,7 @@
           }
         ]
       },
-      WorkEx: {/*Work Experience*/
+      WorkEx: {
         title: '###',
         info: [
           {
@@ -119,7 +119,13 @@
         title: 'Self Evaluation',
         info: [
           {
-            content: ''
+            content: 'aaaaaaaa'
+          },
+          {
+            content: 'aaaaaaaa'
+          },
+          {
+            content: 'aaaaaaaa'
           }
         ]
       }
@@ -127,7 +133,6 @@
   },
   methods: {
     clickA: (index) => {
-      debugger;
       console.log(index)
     }
   }
@@ -336,6 +341,21 @@
   .listItemContent{
     padding:1rem 0 2rem 2rem;
     border:none;
+  }
+  .selfEvaluationContent{
+    padding-left:1rem;
+  }
+  .selfEvaluationContent:after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left:2rem;
+    width:0.6rem;
+    height: 0.6rem;
+    background-color: @greenFontColor;
+    .border-radius(0.3rem);
+    margin-top:-0.8rem;
+    z-index: 1;
   }
   .hidden{
     display: none;
