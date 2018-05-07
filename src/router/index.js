@@ -7,7 +7,6 @@ import link from '@/components/link'
 import classify from '@/components/classify'
 import resume from '@/components/resume'
 import home from '@/components/home'
-import test from '@/components/test'
 Vue.use(Router)
 
 export default new Router({
@@ -48,11 +47,6 @@ export default new Router({
       path: '/resume',
       name: 'resume',
       component: resume
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: test
     }
   ]
 })
